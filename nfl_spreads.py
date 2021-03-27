@@ -2,16 +2,18 @@ import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
 
-url = 'http://www.footballlocks.com/nfl_point_spreads.shtml'
 
-page_response = requests.get(url)
+    if __name__ == '__main__':
+    url = 'http://www.footballlocks.com/nfl_point_spreads.shtml'
 
-page = page_response.content
+    page_response = requests.get(url)
 
-soup = BeautifulSoup(page, 'html.parser')
+    page = page_response.content
 
-table_rows = soup.select('table')
+    soup = BeautifulSoup(page, 'html.parser')
 
-print(table_rows[37])
+    table_rows = soup.select('table')
 
-# website is a mess, not sure of requirement.
+    print(table_rows[37])
+
+    # website is a mess, not sure of requirement.

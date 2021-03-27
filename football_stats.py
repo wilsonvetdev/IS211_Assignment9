@@ -2,37 +2,39 @@ import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
 
-url = 'https://www.cbssports.com/nfl/stats/player/scoring/nfl/regular/all/?sortcol=rutd&sortdir=descending'
+if __name__ == '__main__':
 
-page = requests.get(url)
+    url = 'https://www.cbssports.com/nfl/stats/player/scoring/nfl/regular/all/?sortcol=rutd&sortdir=descending'
 
-soup = BeautifulSoup(page.text, 'html.parser')
+    page = requests.get(url)
 
-player_rows = soup.find_all('tr')
+    soup = BeautifulSoup(page.text, 'html.parser')
 
-player_rows = player_rows[1:]
+    player_rows = soup.find_all('tr')
 
-players_array = []
+    player_rows = player_rows[1:]
 
-counter = 0
+    players_array = []
 
-for row in player_rows:
+    counter = 0
 
-    player_data = {}
-    player_name = row.select('a')[1].get_text()
-    player_position = row.select('.CellPlayerName-position')[0].get_text()
-    player_team = row.select('.CellPlayerName-team')[0].get_text()
-    player_running_touchdowns = row.select('td')[2].get_text()
-    player_data['name'] = player_name
-    player_data['position'] = player_position.strip()
-    player_data['team'] = player_team.strip()
-    player_data['RUTD'] = player_running_touchdowns.strip()
+    for row in player_rows:
 
-    players_array.append(player_data)
+        player_data = {}
+        player_name = row.select('a')[1].get_text()
+        player_position = row.select('.CellPlayerName-position')[0].get_text()
+        player_team = row.select('.CellPlayerName-team')[0].get_text()
+        player_running_touchdowns = row.select('td')[2].get_text()
+        player_data['name'] = player_name
+        player_data['position'] = player_position.strip()
+        player_data['team'] = player_team.strip()
+        player_data['RUTD'] = player_running_touchdowns.strip()
 
-    counter += 1
+        players_array.append(player_data)
 
-    if counter == 20:
-        break
+        counter += 1
 
-pprint(players_array)
+        if counter == 20:
+            break
+
+    pprint(players_array)
