@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 from pprint import pprint
 
 
-    if __name__ == '__main__':
+if __name__ == '__main__':
+    
     url = 'http://www.footballlocks.com/nfl_point_spreads.shtml'
 
     page_response = requests.get(url)
