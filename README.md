@@ -1,9 +1,9 @@
 # IS211_Assignment9
 
 ### Note
-Only **football_stats.py** works as expected and meet requirements.
-**apple_stock.py** and **nfl_spreads.py** don't work.
-**apple_stock.py** gets hung up in the CLI when running the script and the request never gets resolved.
+* Only **football_stats.py** works as expected and meet requirements.
+* **apple_stock.py** and **nfl_spreads.py** don't work.
+* **apple_stock.py** gets hung up in the CLI when running the script and the request never gets resolved.
 
 ### Setup - Python 3.9.1
 
